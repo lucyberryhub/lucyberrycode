@@ -25,8 +25,8 @@ Follow me on my socials for more berry updates:
 
 | **Section**                                          | **Description**                                                         |
 |------------------------------------------------------|-------------------------------------------------------------------------|
-| [🍒 **Cherry Berry File Handling & JSON Jar Magic - A Lovely, Girly Guide!** 🍒](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely, Girly Guide                                                  |
-| [Lucy Berry's Sweet Tutorial on Fixing the ColorDialog](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
+| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely JSON File Handling Guide                                                  |
+| [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
 ---
 
 ### File Handling & JSON Jar Magic - A Lovely, Girly Guide!
