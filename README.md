@@ -29,7 +29,7 @@ Follow me on my socials for more berry updates:
 | [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
 ---
 
-### File Handling & JSON Jar Magic - A Lovely, Girly Guide!
+## File Handling & JSON Jar Magic - A Lovely, Girly Guide!
 [Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
 
 💖 Welcome, sugarplum! 🌸 Are you ready to sprinkle some magic into your coding journey? ✨ This tutorial is like baking a lovely berry pie – each step is sweeter than the last! Let’s dive into the sparkling world of **Cherry Berry File Handling** and turn your data into the cutest **JSON jars** ever. 🍒🎀  
@@ -115,17 +115,14 @@ catch (Exception ex)
 }  
 ```  
 
----  
-
 ### **Conclusion: You're a Lucy Berry Star!** 🍓✨  
-
 Congratulations, darling! 💖 You’ve just created the cutest **JSON jar system** ever. With every file and folder, you’re spreading sweetness in the world of code! 🎀  
 
-🍒 Keep shining and remember, coding is always more magical when you sprinkle it with love and berries! 🍓💖  
+---  
 
 
 
-# Fixing the ColorDialog
+## Fixing the ColorDialog
 [Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
 
 Welcome to **Lucy Berry's Berry Sweet Tutorial**! 🌸💖 Today, we’ll fix that pesky problem with your `ColorDialog` hiding behind your window! But don’t worry, we’re going to make sure the dialog always pops up like a *delicious cherry on top* 🍒. Let’s go ahead and *berry-fy* your code! 🍓✨
