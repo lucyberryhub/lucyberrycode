@@ -23,18 +23,14 @@ Follow me on my socials for more berry updates:
 
 # Lucy Berry's Sweet Coding Recipe Book
 
-- [Cherry Berry File Handling & JSON Jar Magic - A Lovely, Girly Guide](#cherry-berry-file-handling--json-jar-magic---a-lovely-girly-guide)
-
+| **Section**                                          | **Description**                                                         |
+|------------------------------------------------------|-------------------------------------------------------------------------|
+| [🍒 **Cherry Berry File Handling & JSON Jar Magic - A Lovely, Girly Guide!** 🍒](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely, Girly Guide                                                  |
+| [Lucy Berry's Sweet Tutorial on Fixing the ColorDialog](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
 ---
 
-### Cherry Berry File Handling & JSON Jar Magic - A Lovely, Girly Guide
-
+### File Handling & JSON Jar Magic - A Lovely, Girly Guide!
 [Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
-
-
----
-
-### 🍒 **Cherry Berry File Handling & JSON Jar Magic - A Lovely, Girly Guide!** 🍒  
 
 💖 Welcome, sugarplum! 🌸 Are you ready to sprinkle some magic into your coding journey? ✨ This tutorial is like baking a lovely berry pie – each step is sweeter than the last! Let’s dive into the sparkling world of **Cherry Berry File Handling** and turn your data into the cutest **JSON jars** ever. 🍒🎀  
 
@@ -127,4 +123,140 @@ Congratulations, darling! 💖 You’ve just created the cutest **JSON jar syste
 
 🍒 Keep shining and remember, coding is always more magical when you sprinkle it with love and berries! 🍓💖  
 
+
+
+# Fixing the ColorDialog
 [Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
+
+Welcome to **Lucy Berry's Berry Sweet Tutorial**! 🌸💖 Today, we’ll fix that pesky problem with your `ColorDialog` hiding behind your window! But don’t worry, we’re going to make sure the dialog always pops up like a *delicious cherry on top* 🍒. Let’s go ahead and *berry-fy* your code! 🍓✨
+
+---
+
+### 🍓 Problem: The ColorDialog Is Hiding Behind 🍒
+
+Oh no! 😱 Your `ColorDialog` is hiding behind your WPF window like a shy berry in a basket, and we want to bring it to the front! 🍒 So, let's use a little *berry magic* to make it always appear on top. 🌟
+
+---
+
+### 🍒 What We'll Do
+
+We’ll temporarily make your window the **TopMost** (like placing a cherry on top of a cupcake!) so that the `ColorDialog` can *shine brightly in front of your WPF window*. 🍓🌈
+
+---
+
+### 💖 Step 1: Add Some Berry Magic to Bring the ColorDialog to the Front
+
+Now, let’s make your WPF window *TopMost* like a cherry on top of a *berry* sundae! 🍒🍓 Here's how we'll do it:
+
+```csharp
+// 🍓🍒 Sweet ColorDialog Fix for Lucy Berry 🍒🍓
+private void OnBerryColorClicked(object sender, RoutedEventArgs e)
+{
+    // Show the ColorDialog like a sweet berry burst! 🍓
+    var colorDialog = new System.Windows.Forms.ColorDialog();
+
+    // Find the WPF window where the ColorDialog will show up
+    var berryWindow = Window.GetWindow(this);
+
+    if (berryWindow != null)
+    {
+        // Temporarily make the berry window *TopMost* (like a cherry on top!)
+        bool wasTopMost = berryWindow.Topmost;
+        berryWindow.Topmost = true;
+
+        // Activate the berry window to bring it to the front
+        berryWindow.Activate();
+
+        // Use WindowInteropHelper to get the native window handle
+        var berryHelper = new System.Windows.Interop.WindowInteropHelper(berryWindow);
+        
+        // Wrap the window handle with our NativeBerryWindow class
+        var ownerBerryWindow = new NativeBerryWindow(berryHelper.Handle);
+
+        // Display the ColorDialog with the berry window as the owner
+        var berryResult = colorDialog.ShowDialog(ownerBerryWindow);
+
+        // If the user picks a color, update the berry color
+        if (berryResult == System.Windows.Forms.DialogResult.OK)
+        {
+            Color selectedBerryColor = ColorFromArgb(colorDialog.Color);
+            UpdateBerryColor(selectedBerryColor);
+        }
+
+        // After the dialog is closed, restore the berry window's original TopMost state
+        berryWindow.Topmost = wasTopMost;
+    }
+    else
+    {
+        // If no berry window is found, show the ColorDialog anyway
+        var berryResult = colorDialog.ShowDialog();
+        if (berryResult == System.Windows.Forms.DialogResult.OK)
+        {
+            Color selectedBerryColor = ColorFromArgb(colorDialog.Color);
+            UpdateBerryColor(selectedBerryColor);
+        }
+    }
+}
+```
+
+---
+
+### 🍒 Step 2: Add the Sweet NativeBerryWindow Class 🍓
+
+Now, let’s define our *NativeBerryWindow* class so we can pass the native window handle to the `ColorDialog`. This will help keep the dialog in front of your window, like the juiciest berry in the patch! 🍒🍓
+
+```csharp
+// 🍓🍒 NativeBerryWindow Class 🍒🍓
+public class NativeBerryWindow : IWin32Window
+{
+    public NativeBerryWindow(IntPtr berryHandle)
+    {
+        Handle = berryHandle;
+    }
+
+    public IntPtr Handle { get; private set; }
+}
+```
+
+---
+
+### 🍓 Explanation: How It Works 🍒
+
+1. **Temporary TopMost**: We make the window *TopMost* by setting `berryWindow.Topmost = true;` to bring it forward. 🍒 Like placing your favorite berry on top of your dessert! 🍓
+2. **Activate the Window**: We use `berryWindow.Activate();` to make sure the window is brought into focus (just like *shining* a spotlight on your berry!). 🌟
+3. **Dialog Shows Up**: We pass the `NativeBerryWindow` to the `ColorDialog` to make sure it shows up in front. 🍒✨
+
+---
+
+### 🍓💖 Bonus Step: Make Your UI Even More Berry-licious! 🍒🍓
+
+Now, let’s make everything *extra cute* by adding emojis and *berry magic* to your UI. 🍓🍒 We want your user interface to be as sweet as your favorite berry tart! 🌸🍓
+
+---
+
+### 🌸 Conclusion: You Did It, Sweet Berry! 🍓
+
+Yay! 🎉🍒 You’ve successfully fixed the `ColorDialog` issue and made it pop up in front of your window like the juiciest cherry on top of a berry parfait! 🍓🌟 Now your app is even *more berry sweet* than ever! 🍒🍓
+
+Remember, coding can be just as fun as a berry-picking adventure, and you’ve done a wonderful job, Lucy Berry! 🍓✨
+
+---
+
+### 🍒🍓 GitHub Fun: Cherry Emoji Power! 🍓🍒
+
+Here's a *berry sweet* example for your GitHub repo:
+
+```markdown
+🍓💖 Lucy Berry’s Sweet Tutorial 🍓💖
+- 🍒 **Berry ColorDialog Fix**: Make the dialog pop up on top like a cherry on top! 🍒
+- 🍓 **Berry Magic**: Smoothly bring the dialog forward! 🍓
+```
+
+---
+
+### 💖 Keep Coding and Stay Berry Sweet! 💖
+
+Thanks for joining me on this *berry* sweet journey! 🍓🍒 I hope this tutorial was as fun as a basket full of cherries 🍒 and berries 🍓! Stay cute, stay *berry* sweet, and always make your code as fabulous as a fruit salad! 🍓💖
+
+
+
