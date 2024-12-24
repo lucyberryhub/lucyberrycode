@@ -27,7 +27,7 @@ Follow me on my socials for more berry updates:
 |------------------------------------------------------|-------------------------------------------------------------------------|
 | [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely JSON File Handling Guide                                                  |
 | [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
-| [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid--and-stackpanel)| Berry-Sweet Layout Magic in WPF: DockPanel, Grid, and StackPanel Explained! 🍓✨ |
+| [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid-and-stackpanel)| Berry-Sweet Layout Magic in WPF: DockPanel, Grid, and StackPanel Explained! 🍓✨ |
 ---
 
 
@@ -254,7 +254,7 @@ Here's a *berry sweet* example for your GitHub repo:
 
 
 **"Berry-Sweet Layout Magic in WPF: DockPanel, Grid, and StackPanel Explained! 🍓✨"**
-## DockPanel, Grid, and StackPanel
+## DockPanel Grid and StackPanel
 [Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
 ---
 
