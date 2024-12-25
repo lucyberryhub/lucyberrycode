@@ -25,12 +25,12 @@ Follow me on my socials for more berry updates:
 
 | **Section**                                          | **Description**                                                         |
 |------------------------------------------------------|-------------------------------------------------------------------------|
-| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely JSON File Handling Guide|
-| [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
-| [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid-and-stackpanel)| Berry-Sweet Layout Magic in WPF: DockPanel, Grid, and StackPanel Explained! 🍓✨ |
-| [🍒**Cherry Berry Color Picker** 🍓](#cherry-berry-color-picker)| Create the color picker by building it with a **WrapPanel** full of berry squares |
+| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| C#🍓WPF🍓File🍓Json|
+| [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| C#🍓WPF🍓Dialog |
+| [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid-and-stackpanel)| C#🍓WPF🍓Layout |
+| [🍒**Cherry Berry Color Picker** 🍓](#cherry-berry-color-picker)| C#🍓WPF🍓Color |
+| [🍒**How to Delete the Selected Berry from the JSON File**](#how-to-delete-the-selected-berry-from-the-json-file)| C#🍓WPF🍓JSON |
 ---
-
 
 
 ## File Handling & JSON Jar Magic - A Lovely, Girly Guide!
