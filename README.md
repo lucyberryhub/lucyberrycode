@@ -25,9 +25,10 @@ Follow me on my socials for more berry updates:
 
 | **Section**                                          | **Description**                                                         |
 |------------------------------------------------------|-------------------------------------------------------------------------|
-| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely JSON File Handling Guide                                                  |
+| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| A Lovely JSON File Handling Guide|
 | [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| Learn how to fix and customize the ColorDialog in a fun and sweet way! |
 | [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid-and-stackpanel)| Berry-Sweet Layout Magic in WPF: DockPanel, Grid, and StackPanel Explained! 🍓✨ |
+| [🍒**Cherry Berry Color Picker** 🍓](#cherry-berry-color-picker)| Create the color picker by building it with a **WrapPanel** full of berry squares |
 ---
 
 
@@ -353,6 +354,156 @@ StackPanel is your go-to for a quick stack of cherry cupcakes or a line of straw
 - **StackPanel**: Sweet and simple for stacking cute berries. 🍰  
 
 Choose your berry-best layout and let those cherries shine! 🌸✨
+
+
+
+
+
+## Cherry Berry Color Picker
+[Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
+
+Welcome to the **Cherry Berry Color Picker**! 🍒🍓 Today, Lucy learned how to create an adorable and efficient color picker. This color picker uses a beautiful cherry and berry theme with rounded squares as a palette, perfect for picking colors in a sweet and stylish way! 🌸💖
+
+## 🍓 Features
+
+- **Color Palette:** A collection of delightful cherry and berry-inspired colors to choose from 🍒🍓
+- **Easy to Use:** Smooth and easy-to-navigate interface with cute rounded squares 🍬
+- **Cute and Playful:** The perfect blend of fun colors and berry-themed icons to brighten up your day 🌈✨
+
+## 🍒 How Lucy Learned It 🍓
+
+Lucy learned how to create the color picker by building it with a **WrapPanel** full of berry squares. Each square represents a color in a playful and rounded shape, just like juicy cherries and berries! Here's how you can build your own version! 🍒🍓
+
+### 🍓 XAML Code
+
+```xml
+<StackPanel x:Name="BerryTab" Visibility="Visible" Margin="10" Background="White">
+    <TextBlock Text="🍒 Cherry Berry Palette 🍓" FontWeight="Bold" Margin="0,10,0,5" />
+    <WrapPanel x:Name="BerryWrapPanel" HorizontalAlignment="Left" >
+        <!-- Color Palette (Berry and Cherry colors) -->
+    </WrapPanel>
+</StackPanel>
+```
+
+### 🍒 C# Code
+
+```csharp
+private void LoadBerryColors()
+{
+    // Initialize the color list with some berry-inspired colors
+    _berryColors = new ObservableCollection<string>
+    {
+        "CherryRed", "BlueberryBlue", "StrawberryPink", "RaspberryRed", "GrapePurple", "PeachOrange", "BlackberryBlack"
+    };
+
+    BerryWrapPanel.Children.Clear(); // Clear previous berry squares
+    int itemsInRow = 7; // Number of berry squares per row
+    int berryCount = 0; // Track the number of berry squares in the current row
+
+    // Load initial Berry Colors
+    LoadBerryItems(_berryColors, ref berryCount, itemsInRow);
+
+    // Load colors dynamically from the ViewModel (More Berries!)
+    var berryColorsFromJson = viewModel.GetBerryColorsFromJson();
+    LoadBerryItems(berryColorsFromJson.Select(c => c.Color).ToList(), ref berryCount, itemsInRow);
+
+    // Add the "Add Berry" button 🍒
+    AddBerryButton();
+}
+
+private void LoadBerryItems(IEnumerable<string> berryColors, ref int berryCount, int itemsInRow)
+{
+    foreach (var color in berryColors)
+    {
+        // Create and configure the berry square
+        var berrySquare = CreateBerrySquare(color);
+
+        // Add the berry square to the panel
+        BerryWrapPanel.Children.Add(berrySquare);
+        berryCount++;
+
+        // If we've reached the maximum number of berry squares in a row, start a new row
+        if (berryCount % itemsInRow == 0)
+        {
+            BerryWrapPanel.Children.Add(new UIElement()); // Empty space for next row
+        }
+    }
+}
+
+private UIElement CreateBerrySquare(string color)
+{
+    var berrySquare = new Border
+    {
+        Width = 30,
+        Height = 30,
+        Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color)),
+        BorderBrush = Brushes.Gray,
+        BorderThickness = new Thickness(1),
+        Margin = new Thickness(2),
+        CornerRadius = new CornerRadius(5) // Rounded corners like sweet berries!
+    };
+
+    // Add a tooltip to show the berry color name 🍓
+    berrySquare.ToolTip = $"{color} Berry";
+
+    // Attach MouseDown event for berry color selection 🍒
+    berrySquare.MouseDown += OnBerryColorSelected;
+
+    return berrySquare;
+}
+
+private void AddBerryButton()
+{
+    var addBerryButton = new Button
+    {
+        Content = "🍓 Add Berry 🍒",
+        Background = new SolidColorBrush(Colors.Pink),
+        BorderBrush = new SolidColorBrush(Colors.White),
+        Width = 30,
+        Height = 30,
+        Margin = new Thickness(2),
+        HorizontalAlignment = System.Windows.HorizontalAlignment.Left
+    };
+
+    addBerryButton.Click += OnAddBerryColorClicked;
+    BerryWrapPanel.Children.Add(addBerryButton);
+}
+```
+
+## 🍒 Functions & Keywords 🍓
+
+- **LoadBerryColors:** This is where we fill the palette with our delicious berry colors, including cherry red and blueberry blue 🍒🍓
+- **LoadBerryItems:** Loads each berry square dynamically into the WrapPanel, just like arranging your berry basket 🫐🍓
+- **CreateBerrySquare:** Turns each color into a cute, rounded berry square 🍒
+- **AddBerryButton:** Adds a fun button to let users add their own custom berry colors 🍇
+
+## 🍓 Contribution Guidelines
+
+🍒 If you want to add more colors or enhance the berry experience, please feel free to fork this repo and submit your pull requests. We love contributions that bring more sweetness to our berry world! 🍇🍓
+
+- **Add New Berry Colors:** Add new fruit-inspired colors to the palette!
+- **Berry Theme Enhancements:** Improve the UI with more cherry and berry-themed elements 🫐
+
+## 🍒 How to Run
+
+To try out the **Cherry Berry Color Picker**:
+
+1. Clone this repository.
+2. Open the solution in Visual Studio (or your favorite IDE).
+3. Build and run the application.
+4. Enjoy picking your favorite berry-inspired colors! 🍓🍒
+
+---
+
+**🍒 Made with love and berries by Lucy! 🍓**
+```
+
+### Key Changes:
+- The XAML and C# code now use berry and cherry-related keywords such as `Berry`, `Square`, and color names like `CherryRed`, `BlueberryBlue`, `StrawberryPink`, etc.
+- The README is playful, using fun and girly language with cute berry and cherry emojis to match the theme.
+- Lucy is introduced as the creator of the color picker, and the entire flow is framed around a fun berry theme, making the tutorial feel lighthearted and engaging!
+
+This should make the project both enjoyable and visually cute for anyone interacting with it. 🍓🍒
 
 
 
