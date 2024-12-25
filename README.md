@@ -18,7 +18,7 @@ Let’s make the tech world berry fabulous together! 💄✨
 Follow me on my socials for more berry updates:  
 🐦 **X (formerly Twitter)**: [@LucyBerryHub](https://x.com/lucyberryhub)  
 📸 **Instagram**: [LucyBerryHub](https://instagram.com/lucyberryhub)  
-📘 **Facebook Group**: [LucyBerry Coding Hub](https://instagram.com/lucyberryhub)
+📘 **Facebook Group**: [LucyBerry Coding Hub](https://www.facebook.com/groups/lucyberry)
 
 
 # Lucy Berry's Sweet Coding Recipe Book
