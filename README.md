@@ -16,9 +16,9 @@ Whether it’s Python 🍓, JavaScript 🍒, or C# 🫐, I’ll be creating a va
 
 Let’s make the tech world berry fabulous together! 💄✨  
 Follow me on my socials for more berry updates:  
-🐦 **X (formerly Twitter)**: [@lucyberrycode](https://x.com/lucyberrycode)  
-📸 **Instagram**: [lucyberrycode](https://instagram.com/lucyberrycode)  
-
+🐦 **X (formerly Twitter)**: [@LucyBerryHub](https://x.com/lucyberryhub)  
+📸 **Instagram**: [LucyBerryHub](https://instagram.com/lucyberryhub)  
+📘 **Facebook Group**: [LucyBerry Coding Hub](https://instagram.com/lucyberryhub)
 
 
 # Lucy Berry's Sweet Coding Recipe Book
