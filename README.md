@@ -30,6 +30,7 @@ Follow me on my socials for more berry updates:
 | [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid-and-stackpanel)| C#🍓WPF🍓Layout |
 | [🍒**Cherry Berry Color Picker** 🍓](#cherry-berry-color-picker)| C#🍓WPF🍓Color |
 | [🍒**How to Delete the Selected Berry from the JSON File**](#how-to-delete-the-selected-berry-from-the-json-file)| C#🍓WPF🍓JSON |
+| [🍒**Create and Set the Berry Transparency Slider on Textbox Color**](#create-and-set-the-berry-transparency-slider-on-textbox-color)| C#🍓WPF🍓Slider |
 ---
 
 
@@ -736,6 +737,122 @@ Enjoy coding with the sweetest berry colors! 💖🍓
 - The **Add Berry** and **Delete Berry** features now handle berries instead of colors.
 
 Hope this adds a fun touch to your project! 🍓🍒
+---
+
+
+
+## Create and Set the Berry Transparency Slider on Textbox Color
+[Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
+
+Hey, cuties! 💖 Today, we're diving into a sweet and juicy tutorial where we’ll learn to create a **Berry Transparency Slider** for our adorable WPF app. Let’s make your app deliciously transparent with a slider, and don’t worry — there’s plenty of cherry and berry magic sprinkled throughout! 🍓🍒✨
+
+---
+
+## 🍓 What's the Plan? 
+We’ll:
+1. Create a slider to adjust transparency (just like making the perfect berry smoothie! 🥤).
+2. Display a cute little label showing the percentage of transparency.
+3. Use code-behind to add functionality after all our juicy components are fully loaded. 🍒
+
+---
+
+## 🍒 Juicy XAML Setup
+Here’s the berrylicious setup for your XAML! 🫐
+
+```xml
+<Window x:Class="BerryCherryApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Berry Transparency Slider 🍒" Height="200" Width="300"
+        Background="#FFDEE9">
+    <Grid Margin="10">
+        <!-- Berry-Cherry Transparency Slider -->
+        <Slider x:Name="BerrySlider" Width="200" Minimum="0" Maximum="1" Value="1"
+                TickFrequency="0.1" IsSnapToTickEnabled="True"
+                VerticalAlignment="Top" Margin="10" />
+
+        <!-- Berry Transparency Label -->
+        <TextBlock x:Name="BerryPercentage" Text="100% 🍒" Foreground="#FF0048"
+                   FontSize="16" FontWeight="Bold"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Margin="10,50,0,0" />
+    </Grid>
+</Window>
+```
+
+---
+
+## 🌸 Sweet Code-Behind Magic (C#)
+Time to add some berry coding magic to your app! 🍓
+
+```csharp
+using System.Windows;
+
+namespace BerryCherryApp
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            this.Loaded += BerryWindowLoaded;
+        }
+
+        private void BerryWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            // Attach the event handler after all components are initialized
+            BerrySlider.ValueChanged += BerrySlider_ValueChanged;
+
+            // Initialize the Berry Percentage Text
+            UpdateBerryPercentage(BerrySlider.Value);
+        }
+
+        private void BerrySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Update the Berry Transparency Label
+            UpdateBerryPercentage(e.NewValue);
+        }
+
+        private void UpdateBerryPercentage(double value)
+        {
+            if (BerryPercentage != null)
+            {
+                // Update the text with berry percentage and cute cherry emoji
+                BerryPercentage.Text = $"{value * 100:F0}% 🍒";
+            }
+        }
+    }
+}
+```
+
+---
+
+## 🍓 How It Works:
+1. **Slider (BerrySlider)**: Controls the transparency, just like adjusting how many berries to put in your smoothie! 🥤
+2. **Label (BerryPercentage)**: Displays the current transparency level with an adorable 🍒 touch.
+3. **Event Setup in Code-Behind**: Makes sure everything is initialized and working smoothly before handling slider value changes.
+
+---
+
+## 🍒 Demo GIF ✨
+![berry-slider-demo](https://media.giphy.com/media/l3V0sNZ0NGomeurCM/giphy.gif)  
+> Look at our juicy slider magic in action! 🍓🍒
+
+---
+
+## 🌸 Run It, Cutie! 
+1. Copy the XAML and C# code into your WPF project.
+2. Run the app, and voilà — a cutie slider that oozes berrylicious vibes! 🍓🍒
+3. Adjust the slider and watch the berry transparency level update dynamically. 🌟
+
+---
+
+## 🍓 Bonus Tips:
+- **Color Customization**: Change the `Foreground` and `Background` to your favorite berry colors! 🍓🫐
+- **Icons & Emojis**: Sprinkle more cute emojis like 🍓🍒🌸 everywhere!
+- **TickFrequency**: Adjust the smoothness of your slider ticks, because every berry deserves precision. ✨
+
+---
 
 
 
