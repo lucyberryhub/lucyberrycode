@@ -495,8 +495,251 @@ To try out the **Cherry Berry Color Picker**:
 
 ---
 
-**🍒 Made with love and berries by Lucy! 🍓**
 
+## How to Delete the Selected Berry from the JSON File
+[Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
+
+Welcome to the tutorial of the day where we learned how to delete a selected **berry** from the JSON file! 🍇🍓✨ This tutorial is full of **cherry** icons, cutie girly stuff, and a lot of fun. 🍒
+
+We will guide you through the steps involved in creating a color picker (with berry themes!) and how to delete a color from the JSON file when selected. 💖
+
+## 💫 **Features**:
+
+- **Color Selection**: You can pick from a variety of delicious berry-colored squares 🍒🍓.
+- **Add a Berry**: Add a custom berry color to the picker! 🍓
+- **Delete a Berry**: Delete any berry color directly from the list! 🍒
+
+## 🍒 **How the Code Works**:
+
+### 1. **Initializing the Cherry Color Picker** 🍓
+
+When the cherry color picker is created, it loads an initial list of berry colors 🍇🍒 from a predefined set.
+
+```csharp
+public partial class CherryBerryPicker : UserControl
+{
+    private ObservableCollection<BerrySettingModel> _berryColors;
+
+    // Selected Berry Dependency Property
+    public static readonly DependencyProperty SelectedBerryProperty =
+        DependencyProperty.Register("SelectedBerry", typeof(Color), typeof(CherryBerryPicker), new PropertyMetadata(Colors.Transparent));
+
+    public Color SelectedBerry
+    {
+        get { return (Color)GetValue(SelectedBerryProperty); }
+        set { SetValue(SelectedBerryProperty, value); }
+    }
+
+    public CherryBerryPicker()
+    {
+        InitializeComponent();
+        LoadBerryColors(); // Loading the initial berry colors!
+    }
+
+    private void LoadBerryColors()
+    {
+        _berryColors = new ObservableCollection<BerrySettingModel>
+        {
+            new BerrySettingModel { Id = 1, BerryColor = "BlackBerry", IsFromJson = false },
+            new BerrySettingModel { Id = 2, BerryColor = "BlueBerry", IsFromJson = false },
+            new BerrySettingModel { Id = 3, BerryColor = "StrawBerry", IsFromJson = false },
+            new BerrySettingModel { Id = 4, BerryColor = "RedBerry", IsFromJson = false },
+            new BerrySettingModel { Id = 5, BerryColor = "GreenBerry", IsFromJson = false },
+            new BerrySettingModel { Id = 6, BerryColor = "YellowBerry", IsFromJson = false }
+        };
+
+        BerryWrapPanel.Children.Clear(); // Clear old berry items
+        int itemsInRow = 5; // Set number of berry items per row
+        int itemCount = 0;
+
+        // Load the berry colors
+        LoadBerryItems(_berryColors, ref itemCount, itemsInRow);
+
+        // Dynamically add berries from the berry database
+        var berries = GetBerriesFromJson();
+        foreach (var berry in berries)
+        {
+            berry.IsFromJson = true; // These berries are from JSON
+        }
+        LoadBerryItems(berries, ref itemCount, itemsInRow);
+
+        // Add the "Add Berry" button!
+        AddAddBerryButton();
+    }
+
+    private void LoadBerryItems(IEnumerable<BerrySettingModel> berries, ref int itemCount, int itemsInRow)
+    {
+        foreach (var berry in berries)
+        {
+            // Create the berry item (Berry Square)
+            var square = CreateBerrySquare(berry);
+
+            // Add the berry item to the panel
+            BerryWrapPanel.Children.Add(square);
+            itemCount++;
+
+            // If we've hit the max items per row, add a new row
+            if (itemCount % itemsInRow == 0)
+            {
+                BerryWrapPanel.Children.Add(new UIElement()); // Empty space for next row
+            }
+        }
+    }
+```
+
+### 2. **Creating Berry Square Button** 🍇🍓
+
+Each berry color is displayed as a clickable square. If it’s a **cherry berry** from JSON, we add a delete option.
+
+```csharp
+private UIElement CreateBerrySquare(BerrySettingModel berryModel)
+{
+    var button = new Button
+    {
+        Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(berryModel.BerryColor)),
+        Margin = new Thickness(2),
+        ToolTip = $"{berryModel.BerryColor} ({berryModel.Id})",
+        Style = (Style)FindResource("RoundButtonStyle"),
+        Tag = berryModel.Id // Tag the button with the berry Id
+    };
+
+    // If the berry is from JSON, add delete option
+    if (berryModel.IsFromJson)
+    {
+        var contextMenu = new ContextMenu();
+        var deleteMenuItem = new MenuItem { Header = "Delete Berry" };
+
+        // Add the delete icon
+        var deleteIcon = new Image
+        {
+            Source = (ImageSource)FindResource("DeleteBerryIcon"),
+            Width = 16,
+            Height = 16
+        };
+
+        deleteMenuItem.Icon = deleteIcon;
+
+        // Add click handler for the delete berry
+        deleteMenuItem.Click += (s, e) => OnBerryDelete(button);
+        contextMenu.Items.Add(deleteMenuItem);
+        button.ContextMenu = contextMenu;
+    }
+
+    // Attach MouseDown event for berry selection
+    button.Click += (s, e) => OnBerrySelected(button);
+
+    return button;
+}
+```
+
+### 3. **Delete the Selected Berry** 🍓🍒
+
+When a user selects a berry, the `OnBerryDelete` method is triggered. It deletes the berry from the JSON file and removes the UI item.
+
+```csharp
+private void OnBerryDelete(Button button)
+{
+    if (button.Tag is long berryId)
+    {
+        var berryFilePath = "berries.json"; // Path to the berry JSON file
+
+        // Step 1: Read the current berry data
+        var jsonData = File.ReadAllText(berryFilePath);
+
+        // Step 2: Deserialize to list of BerrySettingModels
+        var berrySettings = JsonConvert.DeserializeObject<List<BerrySettingModel>>(jsonData);
+
+        if (berrySettings != null)
+        {
+            // Step 3: Find and remove the selected berry
+            var berryToRemove = berrySettings.FirstOrDefault(x => x.Id == berryId);
+            if (berryToRemove != null)
+            {
+                berrySettings.Remove(berryToRemove);
+                var updatedJsonData = JsonConvert.SerializeObject(berrySettings, Formatting.Indented);
+                File.WriteAllText(berryFilePath, updatedJsonData);
+            }
+        }
+
+        // Remove the berry from the UI
+        if (button.Parent is Panel parentPanel)
+        {
+            parentPanel.Children.Remove(button);
+        }
+    }
+}
+```
+
+### 4. **Handling Berry Selection** 🍒
+
+When a berry is clicked, we raise an event to notify the app about the selected berry color.
+
+```csharp
+private void OnBerrySelected(Button button)
+{
+    if (button.Background is SolidColorBrush brush)
+    {
+        Color selectedBerryColor = brush.Color;
+        // Notify about the selected berry color
+        BerrySelected?.Invoke(selectedBerryColor);
+    }
+    else
+    {
+        MessageBox.Show("Couldn't select the berry.");
+    }
+}
+
+public event Action<Color> BerrySelected;
+```
+
+### 5. **Add Custom Berry Color** 🍇🍒
+
+A "Add Berry" button is added that lets users pick their custom berry color and save it to the list.
+
+```csharp
+private void OnCustomBerryClicked(object sender, RoutedEventArgs e)
+{
+    var berryDialog = new System.Windows.Forms.ColorDialog();
+    var parentWindow = Window.GetWindow(this);
+
+    if (parentWindow != null)
+    {
+        parentWindow.Topmost = true;
+        var helper = new System.Windows.Interop.WindowInteropHelper(parentWindow);
+        var ownerWindow = new NativeWindowWrapper(helper.Handle);
+
+        var result = berryDialog.ShowDialog(ownerWindow);
+
+        if (result == System.Windows.Forms.DialogResult.OK)
+        {
+            Color selectedBerryColor = ColorFromArgb(berryDialog.Color);
+            UpdateSelectedBerryColor(selectedBerryColor);
+        }
+
+        parentWindow.Topmost = false;
+    }
+}
+```
+
+## 💖 **Conclusion**:
+
+You now know how to delete the selected berry from the JSON file and work with colors in your app! 🍇🍒 Add new colors, delete existing ones, and select your favorite berry color! 🌸 
+
+Enjoy coding with the sweetest berry colors! 💖🍓
+
+### 🍒 **Remember**: Always be sweet and juicy like berries in your code! 🍓
+
+
+### Key Highlights:
+- Renamed methods and variables with berry and cherry-related terms (e.g., `BerrySettingModel`, `CreateBerrySquare`, `OnBerryDelete`, etc.).
+- Cleaned up the `viewModel` code and integrated all methods directly into the `CherryBerryPicker` class.
+- The **Add Berry** and **Delete Berry** features now handle berries instead of colors.
+
+Hope this adds a fun touch to your project! 🍓🍒
+
+
+
+**🍒 Made with love and berries by Lucy! 🍓**
 ---
 ### 💖 Keep Coding and Stay Berry Sweet! 💖
 
