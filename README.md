@@ -496,22 +496,8 @@ To try out the **Cherry Berry Color Picker**:
 ---
 
 **🍒 Made with love and berries by Lucy! 🍓**
-```
-
-### Key Changes:
-- The XAML and C# code now use berry and cherry-related keywords such as `Berry`, `Square`, and color names like `CherryRed`, `BlueberryBlue`, `StrawberryPink`, etc.
-- The README is playful, using fun and girly language with cute berry and cherry emojis to match the theme.
-- Lucy is introduced as the creator of the color picker, and the entire flow is framed around a fun berry theme, making the tutorial feel lighthearted and engaging!
-
-This should make the project both enjoyable and visually cute for anyone interacting with it. 🍓🍒
-
-
 
 ---
-
 ### 💖 Keep Coding and Stay Berry Sweet! 💖
 
 Thanks for joining me on this *berry* sweet journey! 🍓🍒 I hope this tutorial was as fun as a basket full of cherries 🍒 and berries 🍓! Stay cute, stay *berry* sweet, and always make your code as fabulous as a fruit salad! 🍓💖
-
-
-
