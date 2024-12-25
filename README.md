@@ -25,7 +25,7 @@ Follow me on my socials for more berry updates:
 
 | **Section**                                          | **Description**                                                         |
 |------------------------------------------------------|-------------------------------------------------------------------------|
-| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| C#🍓WPF🍓File🍓Json|
+| [🍒**Cherry Berry File Handling & JSON Jar Magic**](#file-handling--json-jar-magic---a-lovely-girly-guide)| C#🍓WPF🍓JSON🍓File|
 | [🍒**Fixing the ColorDialog**](#fixing-the-colordialog)| C#🍓WPF🍓Dialog |
 | [🍒**DockPanel, Grid, and StackPanel**](#dockpanel-grid-and-stackpanel)| C#🍓WPF🍓Layout |
 | [🍒**Cherry Berry Color Picker** 🍓](#cherry-berry-color-picker)| C#🍓WPF🍓Color |
