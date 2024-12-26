@@ -31,6 +31,7 @@ Follow me on my socials for more berry updates:
 | [🍒**Cherry Berry Color Picker** 🍓](#cherry-berry-color-picker)| C#🍓WPF🍓Color |
 | [🍒**How to Delete the Selected Berry from the JSON File**](#how-to-delete-the-selected-berry-from-the-json-file)| C#🍓WPF🍓JSON |
 | [🍒**Create and Set the Berry Transparency Slider on Textbox Color**](#create-and-set-the-berry-transparency-slider-on-textbox-color)| C#🍓WPF🍓Slider |
+| [🍒**Ellipses Borders Buttons**](#ellipses-borders-buttons)| C#🍓WPF🍓Objects |
 ---
 
 
@@ -835,7 +836,7 @@ namespace BerryCherryApp
 ---
 
 ## 🍒 Demo GIF ✨
-![berry-slider-demo](https://media.giphy.com/media/l3V0sNZ0NGomeurCM/giphy.gif)  
+![berry-slider-demo](https://learn.microsoft.com/ja-jp/windows/communitytoolkit/resources/images/controls/rangeselector.gif)  
 > Look at our juicy slider magic in action! 🍓🍒
 
 ---
@@ -854,6 +855,160 @@ namespace BerryCherryApp
 
 ---
 
+## Ellipses Borders Buttons
+[Back to Contents](#lucy-berrys-sweet-coding-recipe-book)
+
+Hello, my berrylicious coders! 💖 Today, we’re diving into the sugary world of **Ellipses**, **Borders**, and **Buttons** in WPF! Let’s sprinkle some cherry charm on your designs and make your UI as sweet as a berry pie. 🍒💕
+
+---
+
+### 🍒 What's the Difference Between Ellipses, Borders, and Buttons? 🍒
+
+---
+
+#### 1. **Cherry Circle (Ellipse)** 🍒🍩  
+💫 **Purpose:**  
+Ellipses are your go-to for adding sweet, round shapes like cherries and berries to your design! Perfect for static, non-clickable elements in your berry-themed app.
+
+💫 **What’s it best for?**  
+Adding a cute, decorative cherry or berry (circle or oval shape) to your layout. Think of it as a sprinkle of sweetness!
+
+💫 **Juicy Example:**
+```xml
+<Ellipse Width="50" Height="50" Fill="Pink" Stroke="HotPink" />
+```
+
+---
+
+#### 2. **Berry Basket (Border)** 🍓🍑  
+💫 **Purpose:**  
+Borders are berry baskets that hold other UI elements! You can decorate them with rounded corners and cute little berry themes.
+
+💫 **What’s it best for?**  
+Framing or wrapping content (like a berry basket wrapping your yummy cherries 🍒) with visual charm.
+
+💫 **Juicy Example:**
+```xml
+<Border Width="50" Height="50" Background="LavenderBlush" BorderBrush="HotPink" BorderThickness="2" CornerRadius="10">
+    <TextBlock Text="Berry Love" HorizontalAlignment="Center" VerticalAlignment="Center" />
+</Border>
+```
+
+---
+
+#### 3. **Berry Button (Button)** 🍓🍒  
+💫 **Purpose:**  
+Buttons are your **berry magic wands!** 🍓✨ They let users interact with your app—whether it’s clicking to add a cherry to their basket or selecting their favorite berry smoothie. 💕 
+
+💫 **What’s it best for?**  
+Creating interactive elements that scream **"Click me, Berry Queen!"**
+
+💫 **Juicy Example:**  
+```xml
+<Button Width="50" Height="50" Content="🍒" Background="Pink" Style="{StaticResource RoundButtonStyle}" Click="Button_Click" />
+```
+
+---
+
+### 💕 Sweet Comparison Chart 💕
+Here’s your berry cheat sheet for these sugary delights! 🍓✨  
+
+| **Feature**          | **Cherry Circle (Ellipse)** 🍒  | **Berry Basket (Border)** 🍓   | **Berry Button (Button)** 🍓✨ |
+|-----------------------|--------------------------------|--------------------------------|-------------------------------|
+| **Purpose**          | Shape decoration (cute cherries or berries 🍒) | Wrapping content (like a berry basket!) | Interactive clicks (magic berry actions!) |
+| **Interactivity**    | Basic (MouseDown, MouseMove)   | Basic (MouseDown, MouseMove)  | Advanced (Click, Focus, etc.) |
+| **Content**          | None                          | Single child                  | Fully customizable            |
+| **Use Case**         | Sweet berry decorations!      | Framing your juicy content.   | Berry-licious interactivity! |
+
+---
+
+### 🌸 When to Use Which? 🌸
+
+1. **Cherry Circle (Ellipse):** Use for cute, non-interactive berry designs.
+2. **Berry Basket (Border):** Wrap up your content like a cozy basket of sweetness. 🧺
+3. **Berry Button (Button):** Make your app clickable and interactive with berry-flavored magic! 💖
+
+---
+
+### 🍓 Let’s Make It Extra Sweet with an Example! 🍓
+
+#### **Adding a Cherry Button (Interactive Magic!)**
+```xml
+<Button Width="50" Height="50" Background="HotPink" Style="{StaticResource RoundButtonStyle}" Click="OnBerryClick">
+    <ContentControl Content="🍒" />
+</Button>
+```
+
+#### **Adding a Berry Basket (Wrapping Love!)**
+```xml
+<Border Background="LavenderBlush" BorderBrush="DeepPink" BorderThickness="2" CornerRadius="10" Width="100" Height="50">
+    <TextBlock Text="Berry Sweet!" HorizontalAlignment="Center" VerticalAlignment="Center" />
+</Border>
+```
+
+
+### **🍒 Example: Handling Border with a Check** 🍒  
+This snippet ensures that the event handler checks if the sender is a `Border` before performing actions, keeping your berry-themed app safe and error-free. 💖
+
+#### **Berry Basket Click Handler**  
+
+```csharp
+private void OnBerryClick(object sender, MouseButtonEventArgs e)
+{
+    var border = sender as Border; // Check if sender is a Border
+    if (border != null)
+    {
+        // Extract the color from the Border's Background property
+        var selectedColor = ((SolidColorBrush)border.Background).Color;
+        
+        // Show a berry-licious message!
+        MessageBox.Show($"🍓 You clicked on the berry basket with color: {selectedColor} 🍒");
+
+        // Perform any additional magic for the clicked berry basket
+        DoSomethingWithBerry(selectedColor);
+    }
+    else
+    {
+        MessageBox.Show("Oops! 🍒 That's not a berry basket!");
+    }
+}
+
+// Example of an action method for further berry fun
+private void DoSomethingWithBerry(Color berryColor)
+{
+    // Add your berry magic logic here (e.g., update UI or data)
+    MessageBox.Show($"Berry magic triggered for color: {berryColor}");
+}
+```
+
+---
+
+### **🍓 Full WPF Example with Border as a Berry Basket** 🍓  
+
+#### **XAML: Berry Basket**  
+Here’s how to define a clickable berry basket in your UI:  
+```xml
+<Border Width="50" Height="50"
+        Background="Pink"
+        BorderBrush="DeepPink"
+        BorderThickness="2"
+        CornerRadius="10"
+        Margin="5"
+        MouseDown="OnBerryClick">
+    <TextBlock Text="🍒 Berry Basket" HorizontalAlignment="Center" VerticalAlignment="Center" />
+</Border>
+```
+
+### **💖 What’s Happening?** 💖  
+1. The `sender` in the `OnBerryClick` method is cast to `Border` to check if the clicked element is a berry basket.  
+2. If it’s a `Border`, the magic happens: the color is extracted and berry actions are triggered. 🍓✨  
+3. If the `sender` isn’t a `Border`, the user gets a sweet "Oops" message. 🍒  
+
+---
+
+💖 That’s it, my juicy berries! With these elements, your app will be as adorable and interactive as a strawberry shortcake. 🍓🍰 Don’t forget to sprinkle some love and share your berry designs with me! 🌸🍒
+
+---
 
 
 **🍒 Made with love and berries by Lucy! 🍓**
