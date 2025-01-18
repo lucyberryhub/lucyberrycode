@@ -25,12 +25,8 @@ Follow me on my socials for more berry updates:
 
 | **Section**                                          | **Description**                                                         |
 |------------------------------------------------------|-------------------------------------------------------------------------|
-| [🍒**Lucyberry.SQLite**](https://github.com/lucyberryhub/lucyberrycode/Lucyberry.SQLite)|🍓Library🍓|
-| [🍒**WPF.Tutorial**](https://github.com/lucyberryhub/lucyberrycode/WPF.Tutorial)|🍓Tutorial🍓 |
-| [🍒**WPF.Issues**](https://github.com/lucyberryhub/lucyberrycode/Lucyberry.SQLite)|🍓Issue🍓 |
-| [🍒**Ellipses Borders Buttons**](#ellipses-borders-buttons)| C#🍓WPF🍓Objects |
-| [🍒**MVVM Json data**](#mvvm-json-data)| C#🍓WPF🍓MVVM🍓JSON |
-| [🍒**Berry Cherry Refactor Delight: Sweetening Your WPF Code for Style and Readability**🌸](#refactor)| C#🍓WPF🍓Refactor |
-| [🍒**Binding**](#binding)| C#🍓WPF🍓MVVM🍓Binding Button |
+| [🍒**Lucyberry.SQLite**](https://github.com/lucyberryhub/Lucyberry.SQLite)|🍓Library🍓|
+| [🍒**WPF.Tutorial**](https://github.com/lucyberryhub/WPF.Tutorial)|🍓Tutorial🍓 |
+| [🍒**WPF.Issues**](https://github.com/lucyberryhub/WPF.Issue)|🍓Issue🍓 |
 ---
 
